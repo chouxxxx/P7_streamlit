@@ -8,8 +8,8 @@ st.title("Loan attribution tool")
 st.subheader("Select your client id.")
 
 # Get the user's information
-dff = pd.read_csv("../df.csv")
-df = pd.read_csv("../X_test.csv")
+dff = pd.read_csv("df.csv")
+df = pd.read_csv("X_test.csv")
 client = st.sidebar.slider("Select a client number", 0, len(df)-1, 0)
 client = df.iloc[client]
 client = client.SK_ID_CURR
@@ -19,14 +19,14 @@ st.write("Welcome, client id", client.SK_ID_CURR.values[0])
 
 # Propose modifications for the client's profile
 # (Only the major features)
-major_features = joblib.load("../major_features")
+major_features = joblib.load("major_features")
 client_bis = client.copy()
 for i in major_features.name:
     client_bis[i] = st.number_input(i, value=client[i].values[0])
 
 # Prediction
 if st.button("Predict"):
-    model = joblib.load("../modelSb")
+    model = joblib.load("modelSb")
     result = model.predict(client_bis)[0]
     if result == 1:
         result = "Your loan was refused."
@@ -42,9 +42,9 @@ df_mean.columns = ["Feature", "Average_Population"]
 st.write("Characteristics of the average population:")
 st.write(df_mean)
 
-shap_values = joblib.load("../shapSb5")
-#shap_explainer = joblib.load("../shap_xpl")
-#feature_names = joblib.load("../feature_names")
+shap_values = joblib.load("shapSb5")
+#shap_explainer = joblib.load("shap_xpl")
+#feature_names = joblib.load("feature_names")
 fig, ax = plt.subplots()
 #shap.plots.waterfall(shap_explainer, max_display=8)
 shap.summary_plot(
