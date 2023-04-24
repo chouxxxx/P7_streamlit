@@ -3,6 +3,16 @@ import pandas as pd
 import joblib
 import matplotlib.pyplot as plt
 import shap
+import lightgbm
+import sklearn
+import imblearn
+
+st.write("joblib_version:", joblib.__version__)
+st.write("streamlit_version:", st.__version__)
+st.write("pd_version:", pd.__version__)
+st.write("shap_version:", shap.__version__)
+st.write("lightgbm_version:", lightgbm.__version__)
+st.write("sklearn_version:", sklearn.__version__)
 
 st.title("Loan attribution tool")
 st.subheader("Select your client id.")
