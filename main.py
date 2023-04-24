@@ -43,7 +43,7 @@ st.write("Characteristics of the average population:")
 st.write(df_mean)
 
 shap_values = joblib.load("../shapSb5")
-shap_explainer = joblib.load("../shap_xpl")
+#shap_explainer = joblib.load("../shap_xpl")
 #feature_names = joblib.load("../feature_names")
 fig, ax = plt.subplots()
 #shap.plots.waterfall(shap_explainer, max_display=8)
