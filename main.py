@@ -44,6 +44,8 @@ if st.button("Predict"):
         result = "Your loan was granted."
     else:
         result = "Error during prediction."
+    client_score = model.predict_proba(client_bis)[0]
+    st.write("Your score is " + str(slient_score))
     st.write(result)
 
 #st.write(client[major_features.name])
